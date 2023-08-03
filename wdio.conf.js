@@ -58,7 +58,7 @@ exports.config = {
         'appium:platformVersion' : '11.0',
         'appium:deviceName': 'OPPO CPH1969',
         'appium:automationName': 'UiAutomator2',
-        'appium:app' : path.join(process.cwd(),'app/android/gavel.apk'),
+        'appium:app' : path.join(process.cwd(),'app/android/lenskart-3-8-7.apk'),
         }],
 
     //
