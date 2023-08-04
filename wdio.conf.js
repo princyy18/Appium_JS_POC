@@ -1,4 +1,5 @@
-const path = require('path')
+const path = require('path');
+
 exports.config = {
     //
     // ====================
@@ -24,7 +25,9 @@ exports.config = {
     // will be called from there.
     //
     specs: [
-        './test/specs/login.js'
+        // ToDo: define location for spec files here
+        //'./test/specs/**/*.js'
+        './test/specs/search.js'
     ],
     // Patterns to exclude.
     exclude: [
@@ -46,7 +49,7 @@ exports.config = {
     // and 30 processes will get spawned. The property handles how many capabilities
     // from the same test should run tests.
     //
-    maxInstances: 5,
+    maxInstances: 10,
     //
     // If you have trouble getting all important capabilities together, check out the
     // Sauce Labs platform configurator - a great tool to configure your capabilities:
@@ -54,14 +57,14 @@ exports.config = {
     //
     capabilities: [{
         // capabilities for local Appium web tests on an Android Emulator
-        'appium:platformName' : 'Android',
-        'appium:platformVersion' : '11.0',
-        'appium:deviceName': 'OPPO CPH1969',
+        'appium:platformName': 'Android',
+        'appium:deviceName': 'RZ8R10REF5E',
+        'appium:platformVersion': '11.0',
         'appium:automationName': 'UiAutomator2',
+        'appium:app': path.join(process.cwd(), 'app/android/lenskart-3-8-7.apk'),
         // "appium:appPackage": "com.lenskart.app",
         // "appium:appActivity": "com.lenskart.app.home.ui.HomeBottomNavActivity",
-        'appium:app' : path.join(process.cwd(),'app/android/lenskart-3-8-7.apk'),
-        }],
+    }],
 
     //
     // ===================
@@ -94,7 +97,7 @@ exports.config = {
     // with `/`, the base url gets prepended, not including the path portion of your baseUrl.
     // If your `url` parameter starts without a scheme or `/` (like `some/path`), the base url
     // gets prepended directly.
-    baseUrl: '',
+    baseUrl: 'https://localhost',
     //
     // Default timeout for all waitFor* commands.
     waitforTimeout: 10000,
@@ -236,8 +239,11 @@ exports.config = {
      * @param {boolean} result.passed    true if test has passed, otherwise false
      * @param {object}  result.retries   informations to spec related retries, e.g. `{ attempts: 0, limit: 0 }`
      */
-    // afterTest: function(test, context, { error, result, duration, passed, retries }) {
-    // },
+    afterTest: async function(test, context, { error, result, duration, passed, retries }) {
+        if (!passed) {
+            await browser.takeScreenshot();
+        }
+    },
 
 
     /**
@@ -289,4 +295,10 @@ exports.config = {
     */
     // onReload: function(oldSessionId, newSessionId) {
     // }
+    // ...
+    sync: false,
+    // ...
 }
+
+    
+
