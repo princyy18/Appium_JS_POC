@@ -25,6 +25,7 @@
     "chai": "^4.3.7",
     "chromedriver": "^115.0.0",
     "exceljs": "^4.3.0",
+    "init": "^0.1.2",
     "webdriver-manager": "^12.1.9"
   }
 }

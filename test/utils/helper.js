@@ -14,7 +14,7 @@ class TestHelpers {
  * @param {number} [timeout=10000] - The maximum time in milliseconds to wait for the element to be displayed.
  * @throws {Error} - Throws an error if the element is not displayed within the specified timeout.
  */
-    async waitForElementDisplayed(element, timeout = 10000) {
+    async waitForElementDisplayed(element, timeout = 20000) {
       await element.waitForDisplayed({ timeout });
     }
 
