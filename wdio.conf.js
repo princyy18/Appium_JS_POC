@@ -24,7 +24,7 @@ exports.config = {
     // will be called from there.
     //
     specs: [
-        './test/specs/**/*.js'
+        './test/specs/login.js'
     ],
     // Patterns to exclude.
     exclude: [
@@ -58,6 +58,8 @@ exports.config = {
         'appium:platformVersion' : '11.0',
         'appium:deviceName': 'OPPO CPH1969',
         'appium:automationName': 'UiAutomator2',
+        // "appium:appPackage": "com.lenskart.app",
+        // "appium:appActivity": "com.lenskart.app.home.ui.HomeBottomNavActivity",
         'appium:app' : path.join(process.cwd(),'app/android/lenskart-3-8-7.apk'),
         }],
 
