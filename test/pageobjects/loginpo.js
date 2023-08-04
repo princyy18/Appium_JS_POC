@@ -1,7 +1,7 @@
 
 class LoginPage {
 
-    //baseXpath and endpath to remove redudancy
+    //baseXpath and endpath to remove redudancy of locators
     baseXPath = "//*[@resource-id='com.lenskart.app:id/";
     endXPath = "']";
 
@@ -20,6 +20,19 @@ class LoginPage {
 
     get skipAccessLocation() {
         return $(this.baseXPath + "text_do_it_later" + this.endXPath);
+    }
+    get skipTimeToPose() {
+        
+        let timeToPoseElement = $(this.baseXPath + "title" + this.endXPath);
+        driver.pause(20000);
+        if (timeToPoseElement.isDisplayed()){
+            console.log("Inner if")
+            const skipButton = $(this.baseXPath + "btn_skip" + this.endXPath);
+            skipButton.click();
+        }
+        else{
+            console.log("Time-to-Pose Screen is not present")
+        }      
     }
 
     get homepageLogo() {
