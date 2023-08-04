@@ -29,6 +29,14 @@ class LoginPage {
     get homepageCall() {
         return $(this.baseXPath + "iv_call" + this.endXPath);
     }
+
+    get LoginTextFieldErrorMessage() {
+        return $(this.baseXPath + "textinput_error" + this.endXPath);
+    }
+
+    get pincode() {
+        return $(this.baseXPath + "pin_otp_code" + this.endXPath);
+    }
 }
 
 module.exports = new LoginPage();
