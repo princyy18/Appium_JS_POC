@@ -19,10 +19,10 @@ async function login() {
       // Click on skip in Time to pose screen
       await LoginPage.skipTimeToPose
 
-      //locating homepage elemets to check login is successful or not
-      // await HelperClass.waitForElementDisplayed(LoginPage.homepageLogo);
-      // expect(await LoginPage.homepageLogo.isDisplayed()).toBe(true);
-      // expect(await LoginPage.homepageCall.isDisplayed()).toBe(true);
+      //Now, check if the toast text message is same as entered or not
+      const toastText = "Authentication Successful!";
+      const isToastDisplayed = await HelperClass.isToastMessageDisplayed(toastText);
+      await expect(isToastDisplayed).to.be.true;
 
       //Console message print
       console.log("Login Successful");
