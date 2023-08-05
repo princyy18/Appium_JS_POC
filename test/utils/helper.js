@@ -63,6 +63,10 @@ class TestHelpers {
         });
         return data;
       }
+    async varticalScroll(x, starty, endy){
+      await driver.touchAction([{action: 'longPress', x: x, y: starty},{action: 'moveTo', x: x, y: endy},'release']);
+    }
+  
   }
   
 module.exports = new TestHelpers();
