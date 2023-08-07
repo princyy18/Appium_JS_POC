@@ -49,3 +49,5 @@ replay_pid*
  
 
 node_modules
+allure-results
+allure-report

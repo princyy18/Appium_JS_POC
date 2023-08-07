@@ -85,7 +85,7 @@ describe('Explore test suite', ()=>{
         console.log(await productName.getText())
 
         // Wishlist frame
-        await ExplorePage.wishListFrame.click()
+        //await ExplorePage.wishListFrame.click()
 
         // Verify Wishlist Item count and go to wishlist
         const count = await ExplorePage.wishListCount
@@ -93,6 +93,7 @@ describe('Explore test suite', ()=>{
         if (count.getText() == 1){
             // Go to wishlist
             ExplorePage.clickWishList.click()
+            await driver.pause(5000)
         }
         else{
             await console.log('Item not wishlisted or wishlist count not matched')

@@ -7,7 +7,7 @@ class LoginPage {
 
     //define selectors using getter methods
     get clickLoginViaPhoneText() {
-        return $(this.baseXPath + "loginMobile" + this.endXPath);
+        return $(this.baseXPath + "loginMobile" + this.endXPath); 
     }
 
     get enterMobile() {

@@ -6,12 +6,13 @@ class ExplorePage {
     appXpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup[2]/androidx.viewpager.widget.ViewPager/androidx.recyclerview.widget.RecyclerView/android.widget.FrameLayout/android.view.ViewGroup/androidx.recyclerview.widget.RecyclerView/";
     filterXpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout[2]/android.widget.RelativeLayout/android.widget.LinearLayout[1]/"
    
+    // get is a class property- getter method
     get explore () {
         return $('//android.view.ViewGroup[2]');
     }
 
     get verifyTitle(){
-        return $(this.baseXPath + "tv_toolbar_title" + this.endXPath)
+        return $(this.baseXPath + "tv_toolbar_title" + this.endXPath) // this represents current class object 
     }
 
     get clickWomen(){
