@@ -2,6 +2,7 @@ class ExplorePage {
 
     //baseXpath and endpath to remove redudancy of locators
     baseXPath = "//*[@resource-id='com.lenskart.app:id/";
+    baseXPath1 = "//*[@resource-id='android:id/";
     endXPath = "']";
     appXpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout/android.view.ViewGroup[2]/androidx.viewpager.widget.ViewPager/androidx.recyclerview.widget.RecyclerView/android.widget.FrameLayout/android.view.ViewGroup/androidx.recyclerview.widget.RecyclerView/";
     filterXpath = "/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.widget.FrameLayout[2]/android.widget.RelativeLayout/android.widget.LinearLayout[1]/"
@@ -31,6 +32,10 @@ class ExplorePage {
 
     get filter(){
         return $(this.baseXPath + "button_filter" + this.endXPath)
+    }
+
+    get filterAllValues(){
+        return $$(this.baseXPath + "container_sub_category" + this.endXPath)
     }
 
     get clickFrameType(){
@@ -81,8 +86,52 @@ class ExplorePage {
     }
 
     get clickWishList(){
-        return $('/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.LinearLayout/android.view.ViewGroup/androidx.appcompat.widget.LinearLayoutCompat/android.widget.FrameLayout[1]/android.widget.FrameLayout/android.widget.ImageView')
+        return $('/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.LinearLayout/android.view.ViewGroup/androidx.appcompat.widget.LinearLayoutCompat/android.widget.FrameLayout[1]/android.widget.FrameLayout')
     }
+
+    get wishListedframeName(){
+        return $(this.baseXPath + "title" + this.endXPath)
+    }
+
+    get clickClearList(){
+        return $(this.baseXPath + "btn_clear" + this.endXPath)
+    }
+    get deletePopup(){
+        return $('/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout')
+    }
+
+    get deleteMessage(){
+        return $(this.baseXPath1 + "message" + this.endXPath)
+
+    }
+    get clickNodeletePopup(){
+        return $(this.baseXPath1 + "button2" + this.endXPath)
+
+    }
+    get clickYesdeletePopup(){
+        return $('/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.ScrollView/android.widget.LinearLayout/android.widget.Button[2]')
+
+    }
+
+    get verifyEmptyWishlist(){
+        return $(this.baseXPath + "title" + this.endXPath) 
+    }
+
+    get clickContinueShopping(){
+        return $(this.baseXPath + "button" + this.endXPath) 
+
+    }
+
+    get openWishlistedFrame()
+    {
+        return $('/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/androidx.viewpager.widget.ViewPager/android.view.ViewGroup/android.widget.FrameLayout/androidx.recyclerview.widget.RecyclerView/android.widget.FrameLayout/android.widget.LinearLayout')
+    }
+
+    get btnByNow(){
+        return $(this.baseXPath + 'btn_primary' + this.endXPath)
+    }
+
+
 
 }
 module.exports = new ExplorePage();

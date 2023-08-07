@@ -139,10 +139,10 @@ exports.config = {
     //reporters: ['spec',['allure', {outputDir: 'allure-results'}]],
 
     // Add a custom function to take screenshots
-    afterTest: function (test) {
-        const testName = test.fullTitle;
-        driver.saveScreenshot(join('./allure-results', `${testName}.png`));
-    },
+    // afterTest: function (test) {
+    //     const testName = test.fullTitle;
+    //     driver.saveScreenshot(join('./allure-results', `${testName}.png`));
+    // },
 
     
     //
