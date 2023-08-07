@@ -29,8 +29,8 @@ class TestHelpers {
  * @returns {boolean} - Returns `true` if the toast message is displayed, otherwise `false`.
  */
     async isToastMessageDisplayed(toastText) {
-      const numberOfAttempts = 4; // Adjust the number of attempts as needed
-      const waitTime = 1000; // Adjust the wait time between attempts in milliseconds
+      const numberOfAttempts = 7; // Adjust the number of attempts as needed
+      const waitTime = 200; // Adjust the wait time between attempts in milliseconds
 
       for (let i = 0; i < numberOfAttempts; i++) {
           await driver.pause(waitTime);

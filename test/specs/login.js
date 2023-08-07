@@ -8,6 +8,10 @@ const path = require('path');
 
 describe('Login', () => {
 
+    afterEach(async () => {
+        await driver.closeApp();
+         });
+
     it('Login Positive testcase',async () => {
 
         //Click on Login via phone text
@@ -29,9 +33,6 @@ describe('Login', () => {
         await expect(isToastDisplayed).to.be.true;
         
         console.log("Login Successful");
-
-        //Close the app once test get passed
-        await driver.closeApp();
      })    
 
     it('Enter invalid mobile number ',async () => {
@@ -61,10 +62,6 @@ describe('Login', () => {
         expect(await LoginPage.LoginTextFieldErrorMessage.getText()).to.equal('Please enter a valid phone number');
         
         console.log("Successful TestRun with invalid mobile numbers");
-
-        //Close the app once test get passed
-        await driver.closeApp();
-
         }
     }) 
     
@@ -84,9 +81,6 @@ describe('Login', () => {
         expect(await LoginPage.LoginTextFieldErrorMessage.getText()).to.equal('Please enter a valid phone number');
 
         console.log("Successful TestRun without entering anything");
-
-        //Close the app once test get passed
-        await driver.closeApp();
     })
     
     it('Enter wrong OTP with valid Mobile Number',async () => {
@@ -118,9 +112,6 @@ describe('Login', () => {
         await expect(isToastDisplayed).to.be.true;
         
         console.log("Successful TestRun with wrong OTP");
-
-        //Close the app once test get passed 
-        await driver.closeApp();
     })
 
 })
