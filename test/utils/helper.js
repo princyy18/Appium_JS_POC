@@ -40,7 +40,8 @@ class TestHelpers {
               return true;
           }
       }
-      return false; }
+      return false; 
+    }
 
       /**
  * Reads data from an Excel file specified by the `filePath` and extracts values from the specified sheet.
@@ -57,11 +58,9 @@ class TestHelpers {
         const data = [];
         worksheet.eachRow((row, rowNumber) => {
           if (rowNumber > 1) { // Skip the header row
-            console.log("inside");
-            data.push(row.getCell(2).value.toString()); // Assuming the mobile numbers are in the first column
-          }
-          console.log("Into helper class")
-          console.log(data)
+            data.push(row.getCell(1).value.toString()); // Assuming the mobile numbers are in the first column
+            console.log(data);
+          } 
         });
         console.log(data)
         return data;

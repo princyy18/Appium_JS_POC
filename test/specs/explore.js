@@ -1,10 +1,8 @@
 
-
 const { assert } = require('chai');
 const ExplorePage = require ("..//pageobjects/explorepo");
-const HelperClass = require ("../utils/helper");
+const TestHelpers = require ("../utils/helper");
 const path = require('path');
-
 
 
 describe('Explore test suite', ()=>{
@@ -136,14 +134,12 @@ describe('Explore test suite', ()=>{
         {
             await console.log(" IN condition")
             await ExplorePage.clickYesdeletePopup.click()
-            await console.log(" after click yes")
             // Verify item is removed from wishlist
             const wishlist = await ExplorePage.verifyEmptyWishlist
             console.log(await wishlist.getText())
             await expect(wishlist).toHaveText('No wishlisted items')
         }
         else{
-
             await ExplorePage.clickNodeletePopup.click()
             // Verify wishlisted item name 
             const wishlistedFrameName = await ExplorePage.wishListedframeName
