@@ -60,8 +60,12 @@ class TestHelpers {
             console.log("inside");
             data.push(row.getCell(2).value.toString()); // Assuming the mobile numbers are in the first column
           }
+          console.log("Into helper class")
+          console.log(data)
         });
+        console.log(data)
         return data;
+        console.log(data)
       }
     async varticalScroll(x, starty, endy){
       await driver.touchAction([{action: 'longPress', x: x, y: starty},{action: 'moveTo', x: x, y: endy},'release']);

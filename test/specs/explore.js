@@ -8,13 +8,7 @@ const path = require('path');
 
 
 describe('Explore test suite', ()=>{
-    //Filepath and sheetname of invalid_logindata file
-    const filePath = path.join(__dirname, '../data/bansari_login.xlsx');
-    const sheetName = 'login';
-
-    //Read file
-    const deleteWishlistedItem= HelperClass.readDataFromExcel(filePath, sheetName);
-
+    
     it('Open Items list', async()=>{
         await driver.pause(5000);
         // Click on explore
@@ -130,10 +124,15 @@ describe('Explore test suite', ()=>{
         const popupMessage = await popup.getText()
         await assert.equal(message, popupMessage, 'Message not matched')
 
-        await console.log(data)
+        //Filepath and sheetname of invalid_logindata file
+        const filePath = path.join(__dirname, '../data/bansari_login.xlsx');
+        const sheetName = 'login';
+
+        //Read file
+        const deleteWishlistedItem= await HelperClass.readDataFromExcel(filePath, sheetName);
 
         // click on Yes/No in pop-up as per user input
-        if(deleteWishlistedItem == true)
+        if (deleteWishlistedItem[0] === '1')
         {
             await console.log(" IN condition")
             await ExplorePage.clickYesdeletePopup.click()
