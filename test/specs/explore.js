@@ -1,19 +1,19 @@
 
-
 const { assert } = require('chai');
 const ExplorePage = require ("..//pageobjects/explorepo");
-const HelperClass = require ("../utils/helper");
+const TestHelpers = require ("../utils/helper");
 const path = require('path');
-
 
 
 describe('Explore test suite', ()=>{
     //Filepath and sheetname of invalid_logindata file
-    const filePath = path.join(__dirname, '../data/bansari_login.xlsx');
-    const sheetName = 'login';
+    const filePath = path.join(__dirname, '../data/explore.xlsx');
+    const sheetName = 'explore';
 
     //Read file
-    const deleteWishlistedItem= HelperClass.readDataFromExcel(filePath, sheetName);
+    const deleteWishlistedItem= TestHelpers.readDataFromExcel(filePath, sheetName);
+    console.log("before")
+    
 
     it('Open Items list', async()=>{
         await driver.pause(5000);
@@ -130,21 +130,20 @@ describe('Explore test suite', ()=>{
         const popupMessage = await popup.getText()
         await assert.equal(message, popupMessage, 'Message not matched')
 
-        await console.log(data)
 
         // click on Yes/No in pop-up as per user input
-        if(deleteWishlistedItem == true)
-        {
-            await console.log(" IN condition")
+        // const userInput = '1';
+        // const deleteYN = deleteWishlistedItem.data.includes(userInput)
+
+       
+        if(deleteWishlistedItem.data[0] == '1') {
             await ExplorePage.clickYesdeletePopup.click()
-            await console.log(" after click yes")
             // Verify item is removed from wishlist
             const wishlist = await ExplorePage.verifyEmptyWishlist
             console.log(await wishlist.getText())
             await expect(wishlist).toHaveText('No wishlisted items')
         }
         else{
-
             await ExplorePage.clickNodeletePopup.click()
             // Verify wishlisted item name 
             const wishlistedFrameName = await ExplorePage.wishListedframeName
