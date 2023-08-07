@@ -63,9 +63,9 @@ exports.config = {
         'appium:deviceName': 'RZ8R10REF5E',
         'appium:platformVersion': '11.0',
         'appium:automationName': 'UiAutomator2',
-        'appium:app': path.join(process.cwd(), 'app/android/lenskart-3-8-7.apk'),
-        // "appium:appPackage": "com.lenskart.app",
-        // "appium:appActivity": "com.lenskart.app.home.ui.HomeBottomNavActivity",
+        //'appium:app': path.join(process.cwd(), 'app/android/lenskart-3-8-7.apk'),
+        "appium:appPackage": "com.lenskart.app",
+        "appium:appActivity": "com.lenskart.app.home.ui.HomeBottomNavActivity",
     }],
 
     //
@@ -137,19 +137,9 @@ exports.config = {
     // Test reporter for stdout.
     // The only one supported by default is 'dot'
     // see also: https://webdriver.io/docs/dot-reporter
-    reporters: [['spec', { showDiff: true }], ['allure', {
-        outputDir: './allure-results',
-        disableWebdriverStepsReporting: true,
-      }]], 
-      afterTest: function (test) {
-         const testName = test.fullTitle; 
-         driver.saveScreenshot(join('./allure-results', `${testName}.png`));
-     },
-     afterTest: async function(test, context, { error, result, duration, passed, retries }) {
-        if (passed) {
-            await browser.takeScreenshot();
-        }
-    },
+    reporters: ['spec'],
+
+    
     //
     // Options to be passed to Mocha.
     // See the full list at http://mochajs.org/
