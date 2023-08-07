@@ -136,6 +136,13 @@ exports.config = {
     // The only one supported by default is 'dot'
     // see also: https://webdriver.io/docs/dot-reporter
     reporters: ['spec'],
+    //reporters: ['spec',['allure', {outputDir: 'allure-results'}]],
+
+    // Add a custom function to take screenshots
+    // afterTest: function (test) {
+    //     const testName = test.fullTitle;
+    //     driver.saveScreenshot(join('./allure-results', `${testName}.png`));
+    // },
 
     
     //

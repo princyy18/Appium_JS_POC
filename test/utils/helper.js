@@ -58,7 +58,7 @@ class TestHelpers {
         worksheet.eachRow((row, rowNumber) => {
           if (rowNumber > 1) { // Skip the header row
             console.log("inside");
-            data.push(row.getCell(1).value.toString()); // Assuming the mobile numbers are in the first column
+            data.push(row.getCell(2).value.toString()); // Assuming the mobile numbers are in the first column
           }
         });
         return data;

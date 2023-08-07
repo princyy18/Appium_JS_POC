@@ -1,11 +1,20 @@
 
-//const { expect } = require("chai");
+
+const { assert } = require('chai');
 const ExplorePage = require ("..//pageobjects/explorepo");
 const HelperClass = require ("../utils/helper");
+const path = require('path');
+
 
 
 describe('Explore test suite', ()=>{
-   
+    //Filepath and sheetname of invalid_logindata file
+    const filePath = path.join(__dirname, '../data/bansari_login.xlsx');
+    const sheetName = 'login';
+
+    //Read file
+    const deleteWishlistedItem= HelperClass.readDataFromExcel(filePath, sheetName);
+
     it('Open Items list', async()=>{
         await driver.pause(5000);
         // Click on explore
@@ -22,7 +31,7 @@ describe('Explore test suite', ()=>{
          await driver.pause(5000); 
 
          // perform scroll- x(start and end is same), starty, endy
-         await HelperClass.varticalScroll(500,1878,300)
+         await HelperClass.varticalScroll(400,1878,300)
          await driver.pause(10000); 
 
          //Verify section title is present or not
@@ -38,7 +47,7 @@ describe('Explore test suite', ()=>{
         expect(await ExplorePage.filter.isDisplayed()).toBe(true); 
     
     })
-    
+   
     it('Apply Filter', async()=>{
 
         // Click on filter
@@ -46,7 +55,6 @@ describe('Explore test suite', ()=>{
 
         // Select frametype
         await ExplorePage.clickFrameType.click()
-        // Click rimless
         await ExplorePage.clickrimless.click()
 
         // Select PriceRange
@@ -65,8 +73,9 @@ describe('Explore test suite', ()=>{
     it('Test grid view',async()=>{
         // Change grid view to small
         await ExplorePage.grid.click()
+        //enable to find whole prodcut details- will gave an error - error handled
         try{
-            //Verify product details displayed
+        //Verify product details displayed
         expect(await ExplorePage.verifyProductDetails.isDisplayed()).toBe(false)
         } catch(error){
             console.error('Error Occured:', error.message);
@@ -78,26 +87,80 @@ describe('Explore test suite', ()=>{
          expect(await ExplorePage.verifyProductDetails.isDisplayed()).toBe(true)
     })
 
-    it('Wishlist',async()=>{
+    it('Item add to Wishlist',async()=>{
 
         // Store frame name
         const productName = await ExplorePage.productName
         console.log(await productName.getText())
+        const expProductname = await productName.getText()
 
-        // Wishlist frame
+        //Wishlist frame
         await ExplorePage.wishListFrame.click()
-
+        var count = await ExplorePage.wishListCount
+        try{
         // Verify Wishlist Item count and go to wishlist
-        const count = await ExplorePage.wishListCount
         console.log(await count.getText())
-        if (count.getText() == 1){
-            // Go to wishlist
-            ExplorePage.clickWishList.click()
+        }catch(error){
+            console.error('Error Occured:', error.message);
+        }
+        await driver.pause(5000)
+        await ExplorePage.clickWishList.click()
+        await driver.pause(5000)
+
+        // Verify wishlisted item name 
+        const wishlistedFrameName = await ExplorePage.wishListedframeName
+        console.log(await wishlistedFrameName.getText())
+        const wishlistedName = await wishlistedFrameName.getText()
+
+        // Perform the comparison using Chai assertions
+        await assert.equal(expProductname, wishlistedName, 'Text values are not equal');
+
+    })
+    it('Remove items from wishlist', async()=>{
+
+        // click clear list
+        await ExplorePage.clickClearList.click()
+
+        // Verify pop-up 
+        expect(await ExplorePage.deletePopup.isDisplayed()).toBe(true)
+
+        // Verify pop-up message
+        const message = 'Are you sure you want to remove your wishlisted items'
+        const popup = await ExplorePage.deleteMessage
+        const popupMessage = await popup.getText()
+        await assert.equal(message, popupMessage, 'Message not matched')
+
+        await console.log(data)
+
+        // click on Yes/No in pop-up as per user input
+        if(deleteWishlistedItem == true)
+        {
+            await console.log(" IN condition")
+            await ExplorePage.clickYesdeletePopup.click()
+            await console.log(" after click yes")
+            // Verify item is removed from wishlist
+            const wishlist = await ExplorePage.verifyEmptyWishlist
+            console.log(await wishlist.getText())
+            await expect(wishlist).toHaveText('No wishlisted items')
         }
         else{
-            await console.log('Item not wishlisted or wishlist count not matched')
+
+            await ExplorePage.clickNodeletePopup.click()
+            // Verify wishlisted item name 
+            const wishlistedFrameName = await ExplorePage.wishListedframeName
+            console.log(await wishlistedFrameName.getText())
+            await expect(wishlistedFrameName).toHaveText('Vincent Chase Online')
+
         }
-         
+
+        //if delete=yes=> Click continue shopping
+        await ExplorePage.clickContinueShopping.click()
+
+        // Verify redirection page
+        title = ExplorePage.verifyTitle;
+        await expect(title).toHaveText('Explore')
+        await console.log("Redirected to explore page successfully")
+        
     })
     
 })
