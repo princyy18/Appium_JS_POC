@@ -29,7 +29,7 @@ class TestHelpers {
  * @returns {boolean} - Returns `true` if the toast message is displayed, otherwise `false`.
  */
     async isToastMessageDisplayed(toastText) {
-      const numberOfAttempts = 7; // Adjust the number of attempts as needed
+      const numberOfAttempts = 12; // Adjust the number of attempts as needed
       const waitTime = 200; // Adjust the wait time between attempts in milliseconds
 
       for (let i = 0; i < numberOfAttempts; i++) {
@@ -63,6 +63,7 @@ class TestHelpers {
         });
         return data;
       }
+      
     async varticalScroll(x, starty, endy){
       await driver.touchAction([{action: 'longPress', x: x, y: starty},{action: 'moveTo', x: x, y: endy},'release']);
     }

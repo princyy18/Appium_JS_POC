@@ -25,11 +25,11 @@ exports.config = {
     // then the current working directory is where your `package.json` resides, so `wdio`
     // will be called from there.
     //
-    specs: [
-        // ToDo: define location for spec files here
-        //'./test/specs/**/*.js'
-        //'./test/specs/search.js'
-        './test/specs/login.js',
+    "specs": [
+        [
+            './test/specs/login.js',
+        './test/specs/explore.js',
+        ],
     ],
     // Patterns to exclude.
     exclude: [
@@ -60,12 +60,9 @@ exports.config = {
     capabilities: [{
         // capabilities for local Appium web tests on an Android Emulator
         'appium:platformName': 'Android',
-        'appium:deviceName': 'RZ8R10REF5E',
         'appium:platformVersion': '11.0',
         'appium:automationName': 'UiAutomator2',
-        //'appium:app': path.join(process.cwd(), 'app/android/lenskart-3-8-7.apk'),
-        "appium:appPackage": "com.lenskart.app",
-        "appium:appActivity": "com.lenskart.app.home.ui.HomeBottomNavActivity",
+        'appium:app': path.join(process.cwd(), 'app/android/lenskart-3-8-7.apk'),        
     }],
     //
     // ===================

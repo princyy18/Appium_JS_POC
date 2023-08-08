@@ -9,6 +9,7 @@ const { login } = require('../utils/loginutil');
 describe('Explore test suite', ()=>{
     
     it('Perform login', async()=>{
+        await driver.launchApp();
         //Call login function from loginutils file
         //In login utils file login related login is added
           await login();

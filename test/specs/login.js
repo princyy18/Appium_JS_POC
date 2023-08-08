@@ -37,7 +37,7 @@ describe('Login Tests', () => {
     it('Enter invalid mobile number ',async () => {
 
         //Filepath and sheetname of invalid_logindata file
-        const filePath = path.join(__dirname, '../utils/invalid_Logindata.xlsx');
+        const filePath = path.join(__dirname, '../data/invalid_Logindata.xlsx');
         const sheetName = 'Sheet1';
 
         //array of all the invalid mobile number data
