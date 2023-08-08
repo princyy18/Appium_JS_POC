@@ -3,9 +3,16 @@ const { assert } = require('chai');
 const ExplorePage = require ("..//pageobjects/explorepo");
 const HelperClass = require ("../utils/helper");
 const path = require('path');
+const { login } = require('../utils/loginutil');
 
 
 describe('Explore test suite', ()=>{
+    
+    it('Perform login', async()=>{
+        //Call login function from loginutils file
+        //In login utils file login related login is added
+          await login();
+    }) 
     
     it('Open Items list', async()=>{
         await driver.pause(5000);
@@ -138,6 +145,13 @@ describe('Explore test suite', ()=>{
             const wishlist = await ExplorePage.verifyEmptyWishlist
             console.log(await wishlist.getText())
             await expect(wishlist).toHaveText('No wishlisted items')
+            //if delete=yes=> Click continue shopping
+             await ExplorePage.clickContinueShopping.click()
+
+            // Verify redirection page
+            title = ExplorePage.verifyTitle;
+            await expect(title).toHaveText('Explore')
+            await console.log("Redirected to explore page successfully")
         }
         else{
             await ExplorePage.clickNodeletePopup.click()
@@ -147,14 +161,6 @@ describe('Explore test suite', ()=>{
             await expect(wishlistedFrameName).toHaveText('Vincent Chase Online')
 
         }
-
-        //if delete=yes=> Click continue shopping
-        await ExplorePage.clickContinueShopping.click()
-
-        // Verify redirection page
-        title = ExplorePage.verifyTitle;
-        await expect(title).toHaveText('Explore')
-        await console.log("Redirected to explore page successfully")
         
     })
     

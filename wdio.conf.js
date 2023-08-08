@@ -51,7 +51,7 @@ exports.config = {
     // and 30 processes will get spawned. The property handles how many capabilities
     // from the same test should run tests.
     //
-    maxInstances: 10,
+    maxInstances: 2,
     //
     // If you have trouble getting all important capabilities together, check out the
     // Sauce Labs platform configurator - a great tool to configure your capabilities:
@@ -63,10 +63,10 @@ exports.config = {
         'appium:deviceName': 'RZ8R10REF5E',
         'appium:platformVersion': '11.0',
         'appium:automationName': 'UiAutomator2',
-        'appium:app': path.join(process.cwd(), 'app/android/lenskart-3-8-7.apk'),
-        
+        //'appium:app': path.join(process.cwd(), 'app/android/lenskart-3-8-7.apk'),
+        "appium:appPackage": "com.lenskart.app",
+        "appium:appActivity": "com.lenskart.app.home.ui.HomeBottomNavActivity",
     }],
-
     //
     // ===================
     // Test Configurations
@@ -198,8 +198,9 @@ exports.config = {
      * @param {Array.<String>} specs        List of spec file paths that are to be run
      * @param {object}         browser      instance of created browser/device session
      */
-    // before: function (capabilities, specs) {
+    // beforeTest: function (capabilities, specs) {
     // },
+   
     /**
      * Runs before a WebdriverIO command gets executed.
      * @param {string} commandName hook command name
