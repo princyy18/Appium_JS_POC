@@ -29,7 +29,7 @@ exports.config = {
         // ToDo: define location for spec files here
         //'./test/specs/**/*.js'
         //'./test/specs/search.js'
-        './test/specs/explore.js'
+        './test/specs/login.js',
     ],
     // Patterns to exclude.
     exclude: [
@@ -63,9 +63,8 @@ exports.config = {
         'appium:deviceName': 'RZ8R10REF5E',
         'appium:platformVersion': '11.0',
         'appium:automationName': 'UiAutomator2',
-        //'appium:app': path.join(process.cwd(), 'app/android/lenskart-3-8-7.apk'),
-        "appium:appPackage": "com.lenskart.app",
-        "appium:appActivity": "com.lenskart.app.home.ui.HomeBottomNavActivity",
+        'appium:app': path.join(process.cwd(), 'app/android/lenskart-3-8-7.apk'),
+        
     }],
 
     //

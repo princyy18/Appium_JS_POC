@@ -123,8 +123,8 @@ describe('Explore test suite', ()=>{
         await assert.equal(message, popupMessage, 'Message not matched')
 
         //Filepath and sheetname of invalid_logindata file
-        const filePath = path.join(__dirname, '../data/bansari_login.xlsx');
-        const sheetName = 'login';
+        const filePath = path.join(__dirname, '../data/explore.xlsx');
+        const sheetName = 'explore';
 
         //Read file
         const deleteWishlistedItem= await HelperClass.readDataFromExcel(filePath, sheetName);

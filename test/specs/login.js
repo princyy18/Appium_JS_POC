@@ -4,7 +4,7 @@ const helper = require("../utils/helper");
 const HelperClass = require ("../utils/helper");
 const { expect } = require('chai');
 const path = require('path');
-
+const { remote } = require('webdriverio');
 
 describe('Login', () => {
 
