@@ -59,12 +59,9 @@ class TestHelpers {
         worksheet.eachRow((row, rowNumber) => {
           if (rowNumber > 1) { // Skip the header row
             data.push(row.getCell(1).value.toString()); // Assuming the mobile numbers are in the first column
-            console.log(data);
           } 
         });
-        console.log(data)
         return data;
-        console.log(data)
       }
     async varticalScroll(x, starty, endy){
       await driver.touchAction([{action: 'longPress', x: x, y: starty},{action: 'moveTo', x: x, y: endy},'release']);

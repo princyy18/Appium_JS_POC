@@ -1,7 +1,7 @@
 
 const { assert } = require('chai');
 const ExplorePage = require ("..//pageobjects/explorepo");
-const TestHelpers = require ("../utils/helper");
+const HelperClass = require ("../utils/helper");
 const path = require('path');
 
 
