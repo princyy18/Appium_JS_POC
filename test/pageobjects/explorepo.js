@@ -34,23 +34,20 @@ class ExplorePage {
         return $(this.baseXPath + "button_filter" + this.endXPath)
     }
 
-    get filterAllValues(){
-        return $$(this.baseXPath + "container_sub_category" + this.endXPath)
-    }
 
     get clickFrameType(){
-        return $(this.filterXpath + 'androidx.recyclerview.widget.RecyclerView/android.widget.FrameLayout[2]/android.widget.TextView')
+        return $('/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/androidx.recyclerview.widget.RecyclerView[1]/android.view.ViewGroup[8]/android.widget.TextView')
     }
 
     get clickrimless(){
-        return $(this. filterXpath +'android.widget.FrameLayout/android.widget.FrameLayout/androidx.recyclerview.widget.RecyclerView/android.widget.FrameLayout[3]/android.widget.CheckedTextView')
+        return $('/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/androidx.recyclerview.widget.RecyclerView[2]/android.view.ViewGroup[4]')
     }
 
     get clickPrice(){
-        return $(this.filterXpath + 'androidx.recyclerview.widget.RecyclerView/android.widget.FrameLayout[7]/android.widget.TextView') 
+        return $('/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/androidx.recyclerview.widget.RecyclerView[1]/android.view.ViewGroup[1]/android.widget.TextView') 
     }
     get clickPriceRange(){
-        return $(this. filterXpath + 'android.widget.FrameLayout/android.widget.FrameLayout/androidx.recyclerview.widget.RecyclerView/android.widget.FrameLayout[1]/android.widget.CheckedTextView')
+        return $('/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup/androidx.recyclerview.widget.RecyclerView[2]/android.view.ViewGroup[2]/android.widget.TextView[1]')
     }
 
     get clickApplyFilter(){
