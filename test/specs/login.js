@@ -5,8 +5,7 @@ const HelperClass = require ("../utils/helper");
 const { expect } = require('chai');
 const path = require('path');
 
-
-describe('Login', () => {
+describe('Login Tests', () => {
 
     afterEach(async () => {
         await driver.closeApp();
