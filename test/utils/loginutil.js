@@ -5,6 +5,7 @@ const path = require('path');
 
 async function login() {
 
+   await driver.pause(10000)
     //Filepath and sheetname of invalid_logindata file
     const filePath = path.join(__dirname, '../data/bansari_login.xlsx');
     const sheetName = 'login';
@@ -28,7 +29,6 @@ async function login() {
       await LoginPage.skipAccessLocation.click(); 
 
       // Click on skip in Time to pose screen
-      await driver.pause(10000);
       await LoginPage.skipTimeToPose
 
       //Now, check if the toast text message is same as entered or not
